@@ -14,7 +14,6 @@ ReactDOM.render(
       redirectUri={window.location.origin}
     >
       <Provider store={configureStore()}>
-
         <Application />
       </Provider>
     </Auth0Provider>,
