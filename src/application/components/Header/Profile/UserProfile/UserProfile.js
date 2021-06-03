@@ -12,9 +12,9 @@ const UserProfile = () => {
   return (
     <UserData>
       <Dropdown overlay={userMenu} trigger={['click']}>
-        <a className="ant-dropdown-link" onClick={(e) => e.preventDefault()}>
+        <button type="button" className="ant-dropdown-link" onClick={(e) => e.preventDefault()}>
           <span> {user.nickname} <DownOutlined /></span>
-        </a>
+        </button>
       </Dropdown>
     </UserData>
   );

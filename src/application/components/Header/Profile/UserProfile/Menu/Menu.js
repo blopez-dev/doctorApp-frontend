@@ -1,15 +1,24 @@
 import React from 'react';
-import { Menu } from 'antd';
+import { useAuth0 } from '@auth0/auth0-react';
 
-const MenuOverlay = () => (
-  <Menu>
-    <Menu.Item key="0">
-      <a href="https://www.antgroup.com">1st menu item</a>
-    </Menu.Item>
-    <Menu.Item key="1">
-      <a href="https://www.aliyun.com">2nd menu item</a>
-    </Menu.Item>
-  </Menu>
-);
+import { Menu } from 'antd';
+import ButtonLogout from './styles';
+
+const MenuOverlay = () => {
+  const { logout } = useAuth0();
+
+  return (
+    <Menu>
+      <Menu.Item key="0">
+        <a href="www.google.com">Ajustes</a>
+      </Menu.Item>
+      <Menu.Item key="1">
+        <ButtonLogout type="button" onClick={() => logout({ returnTo: window.location.origin })}>
+          Log Out
+        </ButtonLogout>
+      </Menu.Item>
+    </Menu>
+  );
+};
 
 export default MenuOverlay;
