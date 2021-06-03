@@ -1,5 +1,5 @@
 import React from 'react';
-import BrandImage from '../../../../assets/images/BrandLogo.png';
+import BrandImage from '../../../../../../assets/images/BrandLogo.png';
 import LogoWraper from './styles';
 
 const Logo = () => (

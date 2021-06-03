@@ -1,7 +1,9 @@
-import styled from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
-const GlobalStyles = styled.main`
-  font-family: Verdana, 'sans-serif';
-  font-size:1rem;
+const GlobalStyles = createGlobalStyle`
+  body {
+    font-family: Verdana, 'sans-serif';
+    font-size:1rem;
+  }
 `;
 export default GlobalStyles;

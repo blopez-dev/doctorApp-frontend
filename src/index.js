@@ -16,7 +16,7 @@ ReactDOM.render(
       <Provider store={configureStore()}>
         <Application />
       </Provider>
-    </Auth0Provider>,
+    </Auth0Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

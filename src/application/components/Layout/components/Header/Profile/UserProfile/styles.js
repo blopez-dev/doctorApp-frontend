@@ -13,6 +13,9 @@ const UserData = styled.div`
     border:0;
     color:#0D53FC;
   }
+  .ant-dropdown{
+    box-shadow: 2px 2px 5px #d6d5d5f2;
+  }
   
 `;
 export default UserData;

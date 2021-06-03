@@ -1,13 +1,15 @@
 import React from 'react';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
-import Dashboard from '../pages/Admin/Dashboard';
-import GlobalApp from './styles/globalStyles';
+import GlobalStyles from './styles/globalStyles';
+// import UserRoutes from './Routes/UserRoutes';
+import AdminRoutes from './Routes/AdminRoutes';
 
 function Application() {
   return (
-    <GlobalApp>
-      <Dashboard />
-    </GlobalApp>
+    <>
+      <GlobalStyles />
+      <AdminRoutes />
+    </>
   );
 }
 

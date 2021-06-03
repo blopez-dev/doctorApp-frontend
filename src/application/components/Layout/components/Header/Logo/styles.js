@@ -7,6 +7,7 @@ const LogoWraper = styled.div`
     display:block;
     position:relative;
     max-width:150px;
+    max-height: 40px;
   }
 `;
 export default LogoWraper;
