@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Menu } from 'antd';
-import { Wrapper } from './styles';
+import Wrapper from './styles';
 
 const Sidebar = () => (
   <Wrapper>
