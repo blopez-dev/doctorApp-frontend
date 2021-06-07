@@ -4,6 +4,7 @@ import Layout from '../components/Layout/Layout';
 import Dashboard from '../../pages/Admin/Dashboard/Dashboard';
 import Doctors from '../../pages/Admin/Doctors/Doctor';
 import Patients from '../../pages/Admin/Patients/Patient';
+import Schedule from '../../pages/Admin/Shedule/Shedule';
 
 const Routing = () => (
   <Router>
@@ -18,7 +19,9 @@ const Routing = () => (
         <Route path="/pacientes">
           <Patients />
         </Route>
-        <Route path="/agenda" />
+        <Route path="/agenda">
+          <Schedule />
+        </Route>
       </Switch>
     </Layout>
   </Router>

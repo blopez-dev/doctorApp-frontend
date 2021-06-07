@@ -1,4 +1,3 @@
-
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import resourcesTimeGridPlugin from '@fullcalendar/resource-timegrid';
@@ -29,4 +28,3 @@ export const config = {
   initialView: 'resourceTimeGridDay',
   nowIndicator: true
 };
-
