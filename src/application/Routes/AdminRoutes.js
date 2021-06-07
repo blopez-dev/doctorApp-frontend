@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Layout from '../components/Layout/Layout';
 import Dashboard from '../../pages/Admin/Dashboard/Dashboard';
 import Doctors from '../../pages/Admin/Doctors/Doctor';
+import Patients from '../../pages/Admin/Patients/Patient';
 
 const Routing = () => (
   <Router>
@@ -14,7 +15,9 @@ const Routing = () => (
         <Route path="/doctores">
           <Doctors />
         </Route>
-        <Route path="/pacientes" />
+        <Route path="/pacientes">
+          <Patients />
+        </Route>
         <Route path="/agenda" />
       </Switch>
     </Layout>
