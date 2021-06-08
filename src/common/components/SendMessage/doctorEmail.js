@@ -17,44 +17,39 @@ const validateMessages = {
   }
 };
 
-const DoctorEmail = ({ visible, onClose, title }) => {
-  const onFinish = (values) => {
-    console.log(values);
-  };
-  return (
-    <>
-      <Drawer
-        width={760}
-        visible={visible}
-        onClose={onClose}
-        placement="right"
-        title={title}
-      >
-        <FormEmail>
-          <Form name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
-            <Form.Item
-              name={['user', 'name']}
-              label="De:"
-              rules={[
-                {
-                  required: true
-                }
-              ]}
-            >
-              <Input />
-            </Form.Item>
-            <Form.Item name={['user', 'Asunto']} label="Asunto">
-              <Input.TextArea />
-            </Form.Item>
-            <Form.Item>
-              <Button type="button" htmlType="submit">
-                Enviar
-              </Button>
-            </Form.Item>
-          </Form>
-        </FormEmail>
-      </Drawer>
-    </>
-  );
-};
+const DoctorEmail = ({ visible, onClose, title }) => (
+  <>
+    <Drawer
+      width={760}
+      visible={visible}
+      onClose={onClose}
+      placement="right"
+      title={title}
+    >
+      <FormEmail>
+        <Form name="nest-messages" validateMessages={validateMessages}>
+          <Form.Item
+            name={['user', 'name']}
+            label="De:"
+            rules={[
+              {
+                required: true
+              }
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item name={['user', 'Asunto']} label="Asunto">
+            <Input.TextArea />
+          </Form.Item>
+          <Form.Item>
+            <Button type="button" htmlType="submit">
+              Enviar
+            </Button>
+          </Form.Item>
+        </Form>
+      </FormEmail>
+    </Drawer>
+  </>
+);
 export default DoctorEmail;
