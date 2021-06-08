@@ -4,7 +4,7 @@ import { getAllUsers } from '../../../common/services/users';
 import Card from '../../../common/components/Card/Card';
 import { WrapperContent, Content, TitleSection } from './styles';
 
-const pageLimit = 15;
+const pageLimit = 10;
 const Doctors = () => {
   const [users, setUsers] = useState(null);
   const [page, setPage] = useState(1);

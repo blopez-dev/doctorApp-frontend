@@ -14,6 +14,7 @@ export const WrapperContent = styled.div`
       }
     }
   }
+  
 `;
 
 export const Content = styled.div`

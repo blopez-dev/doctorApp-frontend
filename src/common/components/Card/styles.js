@@ -12,6 +12,9 @@ export const CardWrapper = styled.div`
   min-height:335px;
   margin:10px 10px 0 10px;
   font-family: 'Roboto-Regular', sans-serif;
+  @media (max-width: 1600px) {
+    width:18%;
+  }
 `;
 
 export const InfoDoctor = styled.div`
@@ -91,12 +94,17 @@ export const ImageDoctor = styled.div`
   height:90px;
   border-radius: 50%;
   overflow: hidden;
+  
   img{
     position: absolute;
     top: calc(50% - 55px);
     left: calc(50% - 70px);
     max-width: 150px;
     display: block;
+  }
+  @media (max-width: 1600px) {
+    width:70px;
+    height:70px;
   }
 `;
 export const Button = styled.button`
