@@ -1,16 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Table from 'antd/lib/table';
-import { Pagination } from 'antd';
-import { getAllPatients } from '../../../common/services/patients';
+import { Pagination, Table } from 'antd';
+import { getAllPatients } from 'common/services/patients';
 import columns from './config/columns';
 
-const pageLimit = 20;
-const props = {
-  bordered: true,
-  loading: false,
-  showHeader: true,
-  rowSelection: {}
-};
+const pageLimit = 10;
 
 const Patients = () => {
   const [patients, setPatients] = useState(null);
@@ -19,12 +12,11 @@ const Patients = () => {
     getAllPatients(page, pageLimit)
       .then(setPatients);
   }, [page]);
+
   const onPageChange = (page) => setPage(page);
-
   return (
-
     <div>
-      <Table {...props} columns={columns} dataSource={patients} />
+      <Table columns={columns} dataSource={patients?.rows} pagination={false} />
       <Pagination
         current={page}
         pageSize={pageLimit}

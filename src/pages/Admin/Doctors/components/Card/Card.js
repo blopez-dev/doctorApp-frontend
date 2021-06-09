@@ -1,20 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { getUser } from '../../services/users';
-import DoctorProfile from '../ViewProfile/doctorConfig';
-import DoctorEmail from '../SendMessage/doctorEmail';
-import Viewicon from '../../../assets/images/Viewicon.png';
-import sendMessage from '../../../assets/images/sendMessage.png';
-import { CardWrapper, ImageDoctor, InfoDoctor, NameDoctor, SpecialityDoctor, ActionsDoctor, CustomIcon, SendMessage, ViewDoctor, Button } from './styles';
+import React, { useState } from 'react';
+import DoctorProfile from './components/ViewProfile/doctorConfig';
+import DoctorEmail from './components/SendMessage/doctorEmail';
+import Viewicon from './assets/Viewicon.png';
+import sendMessage from './assets/sendMessage.png';
+import { CardWrapper, ImageDoctor, InfoDoctor, NameDoctor, SpecialityDoctor, ActionsDoctor, CustomIcon, SendMessage, ViewDoctor, Button, Avatar } from './styles';
 
 const Card = ({ id, avatar, name, speciality }) => {
-  const [user, setUser] = useState([]);
   const [visibleProfile, setVisibleProfile] = useState(false);
   const [visibleMessage, setVisibleMessage] = useState(false);
-
-  useEffect(() => {
-    getUser(id)
-      .then(setUser);
-  }, [user]);
 
   const showProfile = () => {
     setVisibleProfile(true);
@@ -34,7 +27,9 @@ const Card = ({ id, avatar, name, speciality }) => {
     <>
       <CardWrapper>
         <ImageDoctor>
-          <img src={avatar} alt={name} />
+          <Avatar>
+            {avatar ? <img src={avatar} alt={name} /> : name[0]}
+          </Avatar>
         </ImageDoctor>
         <InfoDoctor>
           <NameDoctor>

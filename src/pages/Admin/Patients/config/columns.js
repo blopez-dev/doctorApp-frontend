@@ -18,8 +18,20 @@ const columns = [
   {
     title: 'Dirección',
     dataIndex: 'address'
+  },
+  {
+    title: 'Patologías',
+    dataIndex: 'pathologies'
+  },
+  {
+    title: 'Action',
+    dataIndex: '',
+    key: 'x'
+  },
+  {
+    title: 'Action',
+    dataIndex: '',
+    key: 'x'
   }
-
 ];
-
 export default columns;

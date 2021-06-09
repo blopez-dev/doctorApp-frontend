@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Drawer } from 'antd';
-import { getUser } from '../../services/users';
+import { getUser } from 'common/services/users';
 
 const DoctorProfile = ({ id, visible, onClose, title }) => {
   const [user, setUser] = useState(null);
   useEffect(() => {
-    getUser(id).then(setUser);
-  }, [user]);
+    if (visible) {
+      getUser(id).then(setUser);
+    }
+  }, [visible]);
 
   return (
     <>
@@ -17,13 +19,11 @@ const DoctorProfile = ({ id, visible, onClose, title }) => {
         placement="right"
         title={title}
       >
-        {user && user.rows.map((user) => (
+        {user && (
           <p> {user.name}</p>
-
-        ))}
+        )}
       </Drawer>
     </>
-
   );
 };
 export default DoctorProfile;

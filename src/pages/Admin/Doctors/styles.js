@@ -14,7 +14,6 @@ export const WrapperContent = styled.div`
       }
     }
   }
-  
 `;
 
 export const Content = styled.div`
@@ -39,4 +38,25 @@ export const ImageDoctor = styled.div`
   height:100px;
   border-radius: 50%;
   overflow: hidden;
+`;
+
+export const Actions = styled.div`
+  position:relative;
+  display:flex;
+  flex-flow:row wrap;
+  justify-content: flex-end;
+  width:100%;
+  padding:10px;
+  input{
+    max-width:10%;
+  }
+`;
+
+export const AddNew = styled.button`
+  background-color: #49C496;
+  color: #fff;
+  padding: 8px 12px;
+  border: 0;
+  font-size: 14px;
+  box-shadow: 2px 2px 6px #bbbbbb;
 `;

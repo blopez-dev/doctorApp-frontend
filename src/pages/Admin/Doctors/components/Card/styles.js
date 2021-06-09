@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Avatar as AntdAvatar } from 'antd';
 
 export const CardWrapper = styled.div`
   display: flex;
@@ -87,6 +88,17 @@ export const SpecialityDoctor = styled.p`
   letter-spacing: 0.5px;
   color:#646D82;
 `;
+
+export const Avatar = styled(AntdAvatar)`
+  width: 100%;
+  display: flex;
+  height: 100%;
+  font-size: 30px;
+  align-items: center;
+  text-transform: capitalize;
+  background: #25233c;
+`;
+
 export const ImageDoctor = styled.div`
   position:relative;
   display: block;
