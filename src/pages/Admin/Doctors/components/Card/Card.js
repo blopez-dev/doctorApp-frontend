@@ -51,7 +51,7 @@ const Card = ({ id, avatar, name, speciality }) => {
         </ActionsDoctor>
       </CardWrapper>
       <DoctorProfile id={id} visible={visibleProfile} onClose={closeProfile} title={name} />
-      <DoctorEmail id={id} visible={visibleMessage} onClose={hideMessage} title={name} />
+      <DoctorEmail visible={visibleMessage} onClose={hideMessage} title={name} />
     </>
 
   );

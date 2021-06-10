@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Drawer, Form, Input, Button } from 'antd';
 import { createUser } from 'common/services/users';
 
-const NewDoctor = ({ visible, onFinish }) => {
+const NewDoctor = ({ visible, onFinish, onClose }) => {
   const [loading, setLoading] = useState(false);
 
   const onCreate = async (values) => {
@@ -21,6 +21,7 @@ const NewDoctor = ({ visible, onFinish }) => {
         width={760}
         visible={visible}
         placement="right"
+        onClose={onClose}
         title="Nuevo doctor"
       >
         <Form layout="vertical" onFinish={onCreate}>

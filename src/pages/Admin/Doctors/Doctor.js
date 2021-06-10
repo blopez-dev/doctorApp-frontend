@@ -34,7 +34,9 @@ const Doctors = () => {
     setCreateDoctorVisible(false);
     getUsers();
   };
-
+  const hiddenCreation = () => {
+    setCreateDoctorVisible(false);
+  };
   return (
     <>
       <WrapperContent>
@@ -64,7 +66,11 @@ const Doctors = () => {
             showSizeChanger={false}
           />
         </Content>
-        <NewDoctor visible={createDoctorVisible} onFinish={onNewDoctorCreated} />
+        <NewDoctor
+          visible={createDoctorVisible}
+          onFinish={onNewDoctorCreated}
+          onClose={hiddenCreation}
+        />
       </WrapperContent>
     </>
   );
