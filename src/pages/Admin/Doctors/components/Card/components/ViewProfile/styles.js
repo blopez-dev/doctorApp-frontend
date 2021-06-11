@@ -1,23 +1,52 @@
 import styled from 'styled-components';
 
+export const HeadingUser = styled.div`
+  position:relative;
+  display:flex;
+  flex-flow:row wrap;
+  justify-content: center;
+  align-items: stretch;
+  background-color:#fff;
+  box-shadow: 2px 2px 14px rgba(205, 205, 205, 0.51);
+`;
+export const DetailDoctor = styled.div`
+  position:relative;
+  display:flex;
+  flex-flow:column wrap;
+  justify-content: center;
+  align-items: flex-start;
+  margin:20px auto;
+  > * {
+    margin:5px 0px;
+    .anticon{
+      margin:4px 8px;
+      path{
+        fill:#36beb4;
+      }
+    }
+  }
+`;
 export const BodyUser = styled.div`
   position:relative;
   display:flex;
   flex-flow:row wrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: stretch;
+  margin:20px auto;
+  background-color:#fff;
+  box-shadow: 2px 2px 14px rgba(205, 205, 205, 0.51);
+  font-family: 'Roboto-Regular', sans-serif;
 `;
 
-export const LeftCol = styled.div`
+export const Content = styled.div`
   display: flex;
   flex-flow:column wrap;
   justify-content: center;
   align-items: center;
-  width: 25%;
+  width: 90%;
   text-align: left;
-  padding: 10px;  
-  background-color: #e2e2e2;
-  box-shadow: 2px 2px 14px rgba(205, 205, 205, 0.51);
+  padding: 10px;
+  min-height:300px;
 
   .profile--heading.image {
     font-size: 18px;
@@ -26,8 +55,8 @@ export const LeftCol = styled.div`
 `;
 export const ImageUser = styled.div`
   position: relative;
-  width: 70px;
-  height: 70px;
+  width: 100px;
+  height: 100px;
   margin:15px auto;
   border-radius: 50%;
   overflow: hidden;
@@ -40,19 +69,16 @@ export const ImageUser = styled.div`
   }
 `;
 
-export const RightCol = styled.div`
-  position: relative;
-  background-color: rgba(238, 238, 238, 0.46);
-  box-shadow: 2px 2px 14px rgba(205, 205, 205, 0.51);
-  width:70%;
-`;
-
-export const BasicInformation = styled.div`
-  font-size:12px;
-`;
-
-export const DataDoctor = styled.div`
+export const DescriptionDoctor = styled.div`
   max-width:80%;
   text-align:left;
-  margin-left: auto;
+  margin:0 auto;
+  padding:15px;
+  .description--title{
+    font-family: 'Roboto-Bold', sans-serif;
+    font-size:16px;
+  }
+  .description--content{
+    
+  }
 `;

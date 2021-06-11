@@ -8,12 +8,13 @@ export const WrapperContent = styled.div`
     margin:10px 10px 10px auto;
     .ant-pagination-item-active{
       border:0;
-      background-color:#49C496;
+      background-color:#36beb4;
       a{
         color:#fff;
       }
     }
   }
+  
 `;
 
 export const Content = styled.div`
@@ -48,17 +49,16 @@ export const Actions = styled.div`
   align-items: center;
   width:100%;
   padding:10px;
+
   .input--search{
     max-width:20%;
     border-radius:50%;
     box-shadow: none;
-    input{}
-    
   }
 `;
 
 export const AddNew = styled.button`
-  background-color: #49C496;
+  background-color: #36beb4;
   color: #fff;
   padding: 6px 12px;
   border: 0;

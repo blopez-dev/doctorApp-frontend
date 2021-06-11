@@ -9,13 +9,9 @@ export const CardWrapper = styled.div`
   background-color: #ffffff;
   padding: 30px 15px 0 15px;
   box-shadow: 3px 3px 16px #dbdbdb;
-  width:18.5%;
   min-height:335px;
   margin:10px 10px 0 10px;
   font-family: 'Roboto-Regular', sans-serif;
-  @media (max-width: 1600px) {
-    width:18%;
-  }
 `;
 
 export const InfoDoctor = styled.div`
@@ -87,6 +83,7 @@ export const SpecialityDoctor = styled.p`
   font-size:14px;
   letter-spacing: 0.5px;
   color:#646D82;
+  text-align: center;
 `;
 
 export const Avatar = styled(AntdAvatar)`

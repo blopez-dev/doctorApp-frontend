@@ -24,14 +24,18 @@ const columns = [
     dataIndex: 'pathologies'
   },
   {
-    title: 'Action',
-    dataIndex: '',
-    key: 'x'
-  },
-  {
-    title: 'Action',
-    dataIndex: '',
-    key: 'x'
+    align: 'right',
+    render: (text, record) => (
+      <div>
+        <button onClick={() => console.log(record.id)}>
+          Editar
+        </button>
+        <button onClick={() => console.log(record.id)}>
+          Borrar
+        </button>
+      </div>
+    )
   }
+
 ];
 export default columns;

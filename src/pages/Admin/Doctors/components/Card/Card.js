@@ -5,10 +5,10 @@ import Viewicon from './assets/Viewicon.png';
 import sendMessage from './assets/sendMessage.png';
 import { CardWrapper, ImageDoctor, InfoDoctor, NameDoctor, SpecialityDoctor, ActionsDoctor, CustomIcon, SendMessage, ViewDoctor, Button, Avatar } from './styles';
 
-const Card = ({ id, avatar, name, speciality }) => {
+const Card = ({ id, avatar, name, description }) => {
   const [visibleProfile, setVisibleProfile] = useState(false);
   const [visibleMessage, setVisibleMessage] = useState(false);
-
+  const truncateDescription = (str, lgn) => (str.length > lgn ? str.substr(0, lgn - 1) : str);
   const showProfile = () => {
     setVisibleProfile(true);
   };
@@ -36,7 +36,9 @@ const Card = ({ id, avatar, name, speciality }) => {
             {name}
           </NameDoctor>
           <SpecialityDoctor>
-            {speciality}
+            {
+              truncateDescription(description, 40)
+            }
           </SpecialityDoctor>
         </InfoDoctor>
         <ActionsDoctor>
