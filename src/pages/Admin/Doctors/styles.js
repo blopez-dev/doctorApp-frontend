@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const WrapperContent = styled.div`
-  max-width: 1440px;
+  max-width: 1600px;
   padding: 20px 15px;
   margin: 0 auto;
   .ant-pagination{

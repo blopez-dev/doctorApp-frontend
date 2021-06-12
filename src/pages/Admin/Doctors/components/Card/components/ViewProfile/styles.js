@@ -17,7 +17,7 @@ export const DetailDoctor = styled.div`
   align-items: flex-start;
   margin:20px auto;
   > * {
-    margin:5px 0px;
+    margin:5px 0;
     .anticon{
       margin:4px 8px;
       path{

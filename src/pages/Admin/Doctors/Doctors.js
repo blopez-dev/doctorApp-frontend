@@ -16,7 +16,7 @@ const Doctors = () => {
   const [loading, setLoading] = useState(true);
 
   const cardsCount = {
-    [breakpoint.DESKTOP]: 6,
+    [breakpoint.DESKTOP]: 5,
     [breakpoint.TABLET]: 12,
     [breakpoint.MIDDLE_TABLET]: 12,
     [breakpoint.MOBILE]: 24
@@ -73,7 +73,6 @@ const Doctors = () => {
                   onUpdate={onDoctorsChange}
                 />
               </Col>
-
             ))}
           </Row>
         </Content>

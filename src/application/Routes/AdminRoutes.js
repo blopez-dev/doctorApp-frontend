@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Layout from '../components/Layout/Layout';
 import Dashboard from '../../pages/Admin/Dashboard/Dashboard';
-import Doctors from '../../pages/Admin/Doctors/Doctor';
+import Doctors from '../../pages/Admin/Doctors/Doctors';
 import Patients from '../../pages/Admin/Patients/Patient';
 import Schedule from '../../pages/Admin/Shedule/Shedule';
 

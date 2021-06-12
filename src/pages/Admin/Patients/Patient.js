@@ -18,7 +18,6 @@ const Patients = () => {
   return (
     <Wrapper>
       <CreateTitle Type={1} Content="Pacientes" />
-      <CreateTitle Type={1} Content="Pacientes" />
       <Table
         columns={columns}
         dataSource={patients?.rows.map((patient) => ({ ...patient, key: patient.id }))}

@@ -5,7 +5,7 @@ export const Content = styled.div`
   overflow-y: scroll;
 `;
 export const Wrapper = styled.div`
-  max-width: 1440px;
+  max-width: 1600px;
   padding: 20px 15px;
   margin: 0 auto;
 `;
