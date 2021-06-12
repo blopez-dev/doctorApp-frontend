@@ -42,7 +42,7 @@ const Doctors = () => {
   };
 
   const onCreateDoctor = () => setCreateDoctorVisible(true);
-  const onNewDoctorCreated = () => {
+  const onDoctorsChange = () => {
     setCreateDoctorVisible(false);
     getUsers();
   };
@@ -70,6 +70,7 @@ const Doctors = () => {
                   avatar={user.avatar}
                   name={user.name}
                   description={user.description}
+                  onUpdate={onDoctorsChange}
                 />
               </Col>
 
@@ -85,7 +86,7 @@ const Doctors = () => {
         />
         <NewDoctor
           visible={createDoctorVisible}
-          onFinish={onNewDoctorCreated}
+          onFinish={onDoctorsChange}
           onClose={hiddenCreation}
         />
       </WrapperContent>

@@ -1,22 +1,45 @@
 import React, { useEffect, useState } from 'react';
 import { Drawer } from 'antd';
-import { getUser } from 'common/services/users';
-import dayjs from 'dayjs';
+import dateLib from 'common/adapters/date';
 import { PhoneOutlined, MailOutlined, HomeOutlined } from '@ant-design/icons';
-import { HeadingUser, BodyUser, Content, ImageUser, DetailDoctor, DescriptionDoctor } from './styles';
+import { getUser, deleteUser } from 'common/services/users';
+import UpdateDoctor from '../UpdateDoctor/UpdateDoctor';
+import { HeadingUser, BodyUser, Content, ImageUser, DetailDoctor, DescriptionDoctor, ActionsDoctor, Button } from './styles';
 
-const DoctorProfile = ({ id, visible, onClose }) => {
+const DoctorProfile = ({ id, visible, onClose, onUpdate }) => {
   const [user, setUser] = useState(null);
-  const dateStarting = (date) => dayjs(date).format('MMMM D, YYYY');
+  const [visibleUpdateProfile, setVisibleUpdateProfile] = useState(false);
+  const [userHasBeenUpdated, setUserHasBeenUpdated] = useState(false);
+
+  const dateStarting = (date) => dateLib(date).format('MMMM D, YYYY');
   useEffect(() => {
     if (visible) {
       getUser(id).then(setUser);
+    } else if (userHasBeenUpdated) {
+      onUpdate();
     }
   }, [visible]);
+
+  const showUpdateProfile = () => {
+    setVisibleUpdateProfile(true);
+  };
+  const hideUpdateProfile = () => {
+    setVisibleUpdateProfile(false);
+  };
+  const onDelete = async () => {
+    await deleteUser(id);
+    onUpdate();
+  };
+
+  const onUpdateDoctor = () => {
+    setVisibleUpdateProfile(false);
+    getUser(id).then(setUser);
+    setUserHasBeenUpdated(true);
+  };
   return (
     <>
       <Drawer
-        width={463}
+        width={480}
         visible={visible}
         onClose={onClose}
         placement="right"
@@ -54,6 +77,16 @@ const DoctorProfile = ({ id, visible, onClose }) => {
               <p className="description--content">{user.description}</p>
             </DescriptionDoctor>
           </BodyUser>
+          <ActionsDoctor>
+            <Button type="Button" onClick={onDelete}>Dar de baja</Button>
+            <Button onClick={showUpdateProfile} className="view-profile">Actualizar Doctor</Button>
+          </ActionsDoctor>
+          <UpdateDoctor
+            user={user}
+            visible={visibleUpdateProfile}
+            onClose={hideUpdateProfile}
+            onUpdate={onUpdateDoctor}
+          />
         </div>
         )}
       </Drawer>

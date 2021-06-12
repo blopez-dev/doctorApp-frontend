@@ -18,7 +18,7 @@ const NewDoctor = ({ visible, onFinish, onClose }) => {
   return (
     <>
       <Drawer
-        width={760}
+        width={480}
         visible={visible}
         placement="right"
         onClose={onClose}

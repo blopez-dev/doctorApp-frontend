@@ -79,6 +79,46 @@ export const DescriptionDoctor = styled.div`
     font-size:16px;
   }
   .description--content{
-    
   }
+`;
+
+export const ActionsDoctor = styled.div`
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding:15px 0 15px;;
+  border-top: 1px solid rgb(219, 237, 233);
+
+  :after {
+    position: absolute;
+    left: 55%;
+    top: 0;
+    display: block;
+    margin: 0 auto;
+    content: "";
+    width: 1px;
+    height: 100%;
+    background-color: rgb(219, 237, 233);
+  }
+
+  button {
+    position: relative;
+    text-align: center;
+    font-size: 13px;
+    border: 0;
+    color: #25233c;
+    padding: 5px
+  }
+
+`;
+
+export const Button = styled.button`
+  position:relative;
+  display: inline-block;
+  font-size:12px;
+  cursor: pointer;
+  background:none;
 `;

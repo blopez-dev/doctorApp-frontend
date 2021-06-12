@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import DoctorProfile from './components/ViewProfile/doctorConfig';
+import { truncateString } from 'common/utils/string';
+import DoctorProfile from './components/ViewProfile/DoctorProfile';
 import DoctorEmail from './components/SendMessage/doctorEmail';
 import Viewicon from './assets/Viewicon.png';
 import sendMessage from './assets/sendMessage.png';
 import { CardWrapper, ImageDoctor, InfoDoctor, NameDoctor, SpecialityDoctor, ActionsDoctor, CustomIcon, SendMessage, ViewDoctor, Button, Avatar } from './styles';
 
-const Card = ({ id, avatar, name, description }) => {
+const Card = ({ id, avatar, name, description, onUpdate }) => {
   const [visibleProfile, setVisibleProfile] = useState(false);
   const [visibleMessage, setVisibleMessage] = useState(false);
-  const truncateDescription = (str, lgn) => (str.length > lgn ? str.substr(0, lgn - 1) : str);
+
   const showProfile = () => {
     setVisibleProfile(true);
   };
@@ -36,9 +37,7 @@ const Card = ({ id, avatar, name, description }) => {
             {name}
           </NameDoctor>
           <SpecialityDoctor>
-            {
-              truncateDescription(description, 40)
-            }
+            {truncateString(description, 40)}
           </SpecialityDoctor>
         </InfoDoctor>
         <ActionsDoctor>
@@ -52,10 +51,15 @@ const Card = ({ id, avatar, name, description }) => {
           </ViewDoctor>
         </ActionsDoctor>
       </CardWrapper>
-      <DoctorProfile id={id} visible={visibleProfile} onClose={closeProfile} title={name} />
+      <DoctorProfile
+        id={id}
+        visible={visibleProfile}
+        onClose={closeProfile}
+        title={name}
+        onUpdate={onUpdate}
+      />
       <DoctorEmail visible={visibleMessage} onClose={hideMessage} title={name} />
     </>
-
   );
 };
 
