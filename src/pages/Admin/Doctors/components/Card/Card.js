@@ -53,10 +53,10 @@ const Card = ({ id, avatar, name, description, onUpdate }) => {
       </CardWrapper>
       <DoctorProfile
         id={id}
-        visible={visibleProfile}
         onClose={closeProfile}
-        title={name}
         onUpdate={onUpdate}
+        title={name}
+        visible={visibleProfile}
       />
       <DoctorEmail visible={visibleMessage} onClose={hideMessage} title={name} />
     </>

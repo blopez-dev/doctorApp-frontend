@@ -82,10 +82,10 @@ const DoctorProfile = ({ id, visible, onClose, onUpdate }) => {
             <Button onClick={showUpdateProfile} className="view-profile">Actualizar Doctor</Button>
           </ActionsDoctor>
           <UpdateDoctor
-            user={user}
-            visible={visibleUpdateProfile}
             onClose={hideUpdateProfile}
             onUpdate={onUpdateDoctor}
+            user={user}
+            visible={visibleUpdateProfile}
           />
         </div>
         )}

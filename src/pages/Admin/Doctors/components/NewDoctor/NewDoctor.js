@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Drawer, Form, Input, Button } from 'antd';
 import { createUser } from 'common/services/users';
+import SavePatient from './styles';
 
 const NewDoctor = ({ visible, onFinish, onClose }) => {
   const [loading, setLoading] = useState(false);
@@ -35,7 +36,7 @@ const NewDoctor = ({ visible, onFinish, onClose }) => {
             <Input placeholder="Especialidad" />
           </Form.Item>
           <Form.Item>
-            <Button loading={loading} type="primary" htmlType="submit">Submit</Button>
+            <SavePatient loading={loading} htmlType="submit">Guardar</SavePatient>
           </Form.Item>
         </Form>
       </Drawer>

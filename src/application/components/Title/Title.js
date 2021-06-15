@@ -12,7 +12,7 @@ const CreateTitle = ({ Type, Content }) => {
 };
 
 CreateTitle.propTypes = {
-  Type: PropTypes.string.isRequired,
+  Type: PropTypes.number.isRequired,
   Content: PropTypes.string.isRequired
 };
 export default CreateTitle;

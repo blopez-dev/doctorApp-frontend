@@ -6,6 +6,6 @@ const Header = styled.div`
   justify-content: space-between;
   align-items: center;
   background-color: #ffffff;
-  padding:10px 15px;
+  padding:5px 15px;
 `;
 export default Header;

@@ -49,6 +49,7 @@ const Doctors = () => {
   const hiddenCreation = () => {
     setCreateDoctorVisible(false);
   };
+
   return (
     <>
       <WrapperContent>
