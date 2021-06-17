@@ -4,7 +4,7 @@ import { getAllUsers } from 'common/services/users';
 import breakpoint from 'common/enums/breakpoint';
 import Card from './components/Card/Card';
 import NewDoctor from './components/NewDoctor/NewDoctor';
-import { WrapperContent, Content, TitleSection, Actions, AddNew } from './styles';
+import { WrapperDoctors, WrapperContent, Content, TitleSection, Actions, AddNew } from './styles';
 
 const pageLimit = 10;
 const Doctors = () => {
@@ -64,7 +64,7 @@ const Doctors = () => {
         <Content>
 
           {users && users.rows.map((user) => (
-            <div>
+            <WrapperDoctors className="container--card">
               <Card
                 key={user.id}
                 id={user.id}
@@ -73,7 +73,7 @@ const Doctors = () => {
                 description={user.description}
                 onUpdate={onDoctorsChange}
               />
-            </div>
+            </WrapperDoctors>
           ))}
 
         </Content>

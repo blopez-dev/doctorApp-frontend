@@ -12,6 +12,9 @@ export const CardWrapper = styled.div`
   min-height:335px;
   margin:10px 10px 0 10px;
   font-family: 'Roboto-Regular', sans-serif;
+  @media(max-width:1500px){
+    width:25%;  
+  }
 `;
 
 export const InfoDoctor = styled.div`

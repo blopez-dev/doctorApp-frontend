@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+export const WrapperDoctors = styled.div`
+  @media(max-width:1600px){
+    width:25%;
+  }
+`;
 export const WrapperContent = styled.div`
   max-width: 1600px;
   padding: 20px 15px;
