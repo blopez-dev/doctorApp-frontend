@@ -7,7 +7,6 @@ const NewDoctor = ({ visible, onFinish, onClose }) => {
   const [loading, setLoading] = useState(false);
 
   const onCreate = async (values) => {
-    console.log(values);
     try {
       setLoading(true);
       await createUser(values);
