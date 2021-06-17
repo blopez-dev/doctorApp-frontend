@@ -13,9 +13,6 @@
     "@fullcalendar/resource-daygrid": "^5.6.0",
     "@fullcalendar/resource-timegrid": "^5.7.2",
     "@fullcalendar/timegrid": "^5.6.0",
-    "@testing-library/jest-dom": "^5.12.0",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
     "antd": "^4.16.1",
     "axios": "^0.21.1",
     "dayjs": "^1.10.5",
@@ -36,7 +33,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test":  "react-scripts test --watchAll --collect-coverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -58,10 +55,14 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.6",
+    "@testing-library/react": "^11.2.2",
+    "@testing-library/user-event": "^12.2.2",
     "eslint": "^7.27.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.23.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0"
   }

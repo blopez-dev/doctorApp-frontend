@@ -6,11 +6,11 @@ import AdminRoutes from './Routes/AdminRoutes';
 
 function Application() {
   return (
-    <>
+    <div>
       <GlobalStyles />
       <GlobalFonts />
       <AdminRoutes />
-    </>
+    </div>
   );
 }
 

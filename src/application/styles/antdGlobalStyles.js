@@ -12,13 +12,14 @@ const AntdGlobalStyle = css`
 
   .ant-menu-item{
     padding-left: 24px;
-    border-radius: 30px 0px 0px 30px;
   }
-
+  .ant-menu-item span a img{filter:invert(1);}
+  .ant-menu-item.ant-menu-item-selected span a.active img{filter:invert(0);}
 
   .ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected{
-    background-color:#eaedf7;
+    background-color:#fff;
   }
+  .ant-menu-inline-collapsed-tooltip { display: none; }
 
   .ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected a {color:#25233c; font-weight: 500;}
   .ant-drawer-content{background-color:#eaedf7;}

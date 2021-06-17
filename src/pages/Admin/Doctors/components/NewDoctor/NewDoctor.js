@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Drawer, Form, Input, Button } from 'antd';
+import { Drawer, Form, Input } from 'antd';
 import { createUser } from 'common/services/users';
 import SavePatient from './styles';
 
@@ -7,6 +7,7 @@ const NewDoctor = ({ visible, onFinish, onClose }) => {
   const [loading, setLoading] = useState(false);
 
   const onCreate = async (values) => {
+    console.log(values);
     try {
       setLoading(true);
       await createUser(values);
@@ -17,7 +18,7 @@ const NewDoctor = ({ visible, onFinish, onClose }) => {
   };
 
   return (
-    <>
+    <div data-testid="NewDoctor">
       <Drawer
         width={480}
         visible={visible}
@@ -40,7 +41,7 @@ const NewDoctor = ({ visible, onFinish, onClose }) => {
           </Form.Item>
         </Form>
       </Drawer>
-    </>
+    </div>
   );
 };
 

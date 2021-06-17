@@ -1,8 +1,10 @@
 import { getAllUsers, createUser, getUser, deleteUser, updateById } from './users';
 
 jest.setTimeout(6000);
-describe('Test para hacer petición de todos los usuarios a la papi', () => {
+
+describe('Test para hacer petición de todos los usuarios a la api', () => {
   const results = [];
+
   const createUserWihtMockData = async (name) => {
     const user = {
       avatar: 'http://placeimg.com/640/480/nature',

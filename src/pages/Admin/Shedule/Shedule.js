@@ -4,6 +4,7 @@ import FullCalendar from '@fullcalendar/react';
 import { config, eventFormat } from './config/config';
 import getAllAppointments from '../../../common/services/appoinments';
 import getAllRooms from '../../../common/services/rooms';
+import Container from './styles';
 
 const Schedule = () => {
   const [appointments, setAppointments] = useState([]);
@@ -15,7 +16,7 @@ const Schedule = () => {
   }, []);
 
   return (
-    <div>
+    <Container>
       <FullCalendar
         {...config}
         slotMinTime="08:00:00"
@@ -28,7 +29,7 @@ const Schedule = () => {
           resourceId: room.id
         }))}
       />
-    </div>
+    </Container>
   );
 };
 

@@ -13,7 +13,7 @@ ReactDOM.render(
       redirectUri={window.location.origin}
     >
       <Provider store={configureStore()}>
-        <Application />
+        <Application data-testid="Application" />
       </Provider>
     </Auth0Provider>
   </React.StrictMode>,

@@ -7,6 +7,7 @@ import sendMessage from './assets/sendMessage.png';
 import { CardWrapper, ImageDoctor, InfoDoctor, NameDoctor, SpecialityDoctor, ActionsDoctor, CustomIcon, SendMessage, ViewDoctor, Button, Avatar } from './styles';
 
 const Card = ({ id, avatar, name, description, onUpdate }) => {
+
   const [visibleProfile, setVisibleProfile] = useState(false);
   const [visibleMessage, setVisibleMessage] = useState(false);
 
@@ -26,7 +27,7 @@ const Card = ({ id, avatar, name, description, onUpdate }) => {
 
   return (
     <>
-      <CardWrapper>
+      <CardWrapper data-testid="CardDoctor">
         <ImageDoctor>
           <Avatar>
             {avatar ? <img src={avatar} alt={name} /> : name[0]}
@@ -43,11 +44,11 @@ const Card = ({ id, avatar, name, description, onUpdate }) => {
         <ActionsDoctor>
           <SendMessage>
             <CustomIcon src={sendMessage} alt="send message" />
-            <Button onClick={showMessage}>Enviar Mensaje</Button>
+            <Button onClick={showMessage} data-testid="NewMessage">Enviar Mensaje</Button>
           </SendMessage>
           <ViewDoctor>
             <CustomIcon src={Viewicon} alt="view profile" />
-            <Button onClick={showProfile} className="view-profile">Ver doctor</Button>
+            <Button onClick={showProfile} className="view-profile" data-testid="ViewDoctor">Ver doctor</Button>
           </ViewDoctor>
         </ActionsDoctor>
       </CardWrapper>

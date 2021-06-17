@@ -9,7 +9,7 @@ const MenuOverlay = () => {
 
   return (
     <Menu>
-      <Menu.Item key="0">
+      <Menu.Item key="0" data-testid="DropdownMenu">
         <a href="www.google.com">Ajustes</a>
       </Menu.Item>
       <Menu.Item key="1">

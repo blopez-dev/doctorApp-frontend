@@ -5,7 +5,7 @@ import Profile from './Profile';
 import Header from './styles';
 
 const Head = () => (
-  <Header>
+  <Header data-testid="header">
     <Logo />
     <Profile />
   </Header>

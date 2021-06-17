@@ -5,10 +5,10 @@ import Wrapper from './styles';
 import SidebarImages from './assets/images/images';
 
 const Sidebar = () => (
-  <Wrapper>
+  <Wrapper data-testid="Sidebar">
     <Menu theme="dark" mode="inline" activeKey="/">
       <Menu.Item key="/">
-        <NavLink to="/">
+        <NavLink to="/" >
           <img src={SidebarImages[0].image} alt="" className="iconSidebar" /> <span>Inicio</span>
         </NavLink>
       </Menu.Item>

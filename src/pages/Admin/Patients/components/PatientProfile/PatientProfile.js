@@ -2,19 +2,25 @@ import React, { useState, useEffect } from 'react';
 import { Button, Drawer, Form, Input } from 'antd';
 import { getPatientById, updateById } from 'common/services/patients';
 
-const PatientProfile = ({ patientData, visible, onClose }) => {
+const PatientProfile = ({ patientId, visible, onClose }) => {
   const [patient, setPatient] = useState(null);
+
   const onFinish = async (values) => {
     await updateById(patient.id, values);
   };
+
   useEffect(() => {
-    if (!patient) {
-      getPatientById(patientData).then(setPatient);
-    }
-  }, [patient]);
+    getPatientById(patientId).then(setPatient);
+  }, [patientId]);
+
+  useEffect(() => {
+    if (!visible) setPatient(null);
+  }, [visible]);
+
   return (
     <>
       <Drawer
+        destroyOnClose
         width={480}
         visible={visible}
         onClose={onClose}

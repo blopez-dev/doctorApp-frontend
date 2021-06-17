@@ -3,20 +3,29 @@ import { fromDesktop, isMobile, isTablet, isMiddleTablet } from 'common/styles/b
 import breakpoint from 'common/enums/breakpoint';
 
 const getBreakpoints = () => {
-  const isMobileBr = [window.matchMedia(isMobile).matches, breakpoint.MOBILE];
-  const isTabletBr = [window.matchMedia(isTablet).matches, breakpoint.TABLET];
-  const isMiddleTabletBr = [window.matchMedia(isMiddleTablet).matches, breakpoint.MIDDLE_TABLET];
-  const isDesktopBr = [window.matchMedia(fromDesktop).matches, breakpoint.DESKTOP];
+  if (window.matchMedia) {
+    const isMobileBr = [window.matchMedia(isMobile)?.matches, breakpoint.MOBILE];
+    const isTabletBr = [window.matchMedia(isTablet)?.matches, breakpoint.TABLET];
+    const isMiddleTabletBr = [window.matchMedia(isMiddleTablet)?.matches, breakpoint.MIDDLE_TABLET];
+    const isDesktopBr = [window.matchMedia(fromDesktop)?.matches, breakpoint.DESKTOP];
 
-  const [, current] = [isMobileBr, isMiddleTabletBr, isTabletBr, isDesktopBr]
-    .find(([active]) => active);
+    const [, current] = [isMobileBr, isMiddleTabletBr, isTabletBr, isDesktopBr]
+      .find(([active]) => active) || isDesktopBr;
 
+    return {
+      isMobile: isMobileBr[0],
+      isTablet: isTabletBr[0],
+      isMiddleTablet: isMiddleTabletBr[0],
+      isDesktop: isDesktopBr[0],
+      current
+    };
+  }
   return {
-    isMobile: isMobileBr[0],
-    isTablet: isTabletBr[0],
-    isMiddleTablet: isMiddleTabletBr[0],
-    isDesktop: isDesktopBr[0],
-    current
+    isMobile: false,
+    isTablet: false,
+    isMiddleTablet: false,
+    isDesktop: true,
+    current: 'desktop'
   };
 };
 

@@ -3,9 +3,9 @@ import { Pagination, Spin, Table } from 'antd';
 import { deletePatient, getAllPatients } from 'common/services/patients';
 import NewPatient from './components/NewPatient/NewPatient';
 import CreateTitle from '../../../application/components/Title/Title';
-import { Wrapper, TablePatients, DeletePatient, EditPatient, AddNew, CustomRow } from './styles';
-
 import PatientProfile from './components/PatientProfile/PatientProfile';
+import { columns } from './config/columns';
+import { Wrapper, TablePatients, AddNew, CustomRow } from './styles';
 
 const pageLimit = 15;
 
@@ -34,7 +34,6 @@ const Patients = () => {
 
   const onDeletePatient = async (id) => {
     await deletePatient(id);
-    setLoading(true);
     getPatients();
   };
 
@@ -53,48 +52,6 @@ const Patients = () => {
     getPatients();
   }, [page]);
 
-  const onPageChange = (page) => setPage(page);
-  const columns = [
-    {
-      title: 'Id',
-      dataIndex: 'id'
-    },
-    {
-      title: 'Nombre',
-      dataIndex: 'name'
-    },
-    {
-      title: 'Email',
-      dataIndex: 'email'
-    },
-    {
-      title: 'Teléfono',
-      dataIndex: 'phone'
-    },
-    {
-      title: 'Dirección',
-      dataIndex: 'address'
-    },
-    {
-      title: 'Patologías',
-      dataIndex: 'pathologies'
-    },
-    {
-      title: 'operation',
-      dataIndex: 'operation',
-      render: (text, record) => (
-        <div>
-          <EditPatient onClick={() => showPatientProfile(record.id)}>
-            Editar
-          </EditPatient>
-          <DeletePatient onClick={() => onDeletePatient(record.id)}>
-            Borrar
-          </DeletePatient>
-        </div>
-      )
-    }
-
-  ];
   return (
     <>
       <Wrapper>
@@ -105,7 +62,7 @@ const Patients = () => {
         </CustomRow>
         <TablePatients>
           <Table
-            columns={columns}
+            columns={columns(showPatientProfile, onDeletePatient)}
             dataSource={patients?.rows.map((patient) => ({ ...patient, key: patient.id }))}
             pagination={false}
             className="table--patients"
@@ -114,7 +71,7 @@ const Patients = () => {
             current={page}
             pageSize={pageLimit}
             total={patients?.count}
-            onChange={onPageChange}
+            onChange={setPage}
             showSizeChanger={false}
           />
         </TablePatients>
@@ -123,17 +80,13 @@ const Patients = () => {
           onClose={hiddenCreation}
           onFinish={onPatientsChange}
         />
-        {
-          selectedPatient
-            ? (
-              <PatientProfile
-                patientData={selectedPatient}
-                visible={visiblePatient}
-                onClose={closePatientProfile}
-              />
-            )
-            : null
-        }
+        {selectedPatient && (
+          <PatientProfile
+            patientId={selectedPatient}
+            visible={visiblePatient}
+            onClose={closePatientProfile}
+          />
+        )}
       </Wrapper>
     </>
   );
