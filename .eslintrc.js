@@ -12,7 +12,7 @@ module.exports = {
     ecmaFeatures: {
       jsx: true
     },
-    ecmaVersion: 12,
+    ecmaVersion: 2021,
     sourceType: 'module'
   },
   plugins: [
@@ -29,7 +29,6 @@ module.exports = {
     'global-require': 0,
     'import/no-unresolved': 0,
     'import/prefer-default-export': 0,
-    'eslint linebreak-style': [0, 'error', 'windows'],
     'react/jsx-one-expression-per-line': 0,
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'react/jsx-props-no-spreading': 0
