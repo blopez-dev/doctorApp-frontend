@@ -9,22 +9,27 @@ const Sidebar = () => (
     <Menu theme="dark" mode="inline" activeKey="/">
       <Menu.Item key="/">
         <NavLink to="/" >
-          <img src={SidebarImages[0].image} alt="" className="iconSidebar" /> <span>Inicio</span>
+          <span>Inicio</span>
         </NavLink>
       </Menu.Item>
       <Menu.Item key="/doctores">
         <NavLink to="/doctores">
-          <img src={SidebarImages[1].image} alt="" className="iconSidebar" /> <span>Doctores</span>
+          <span>Doctores</span>
         </NavLink>
       </Menu.Item>
       <Menu.Item key="/pacientes">
         <NavLink to="/pacientes">
-          <img src={SidebarImages[2].image} alt="" className="iconSidebar" /><span>Pacientes</span>
+          <span>Pacientes</span>
         </NavLink>
       </Menu.Item>
-      <Menu.Item key="/agenda">
-        <NavLink to="/agenda">
-          <img src={SidebarImages[3].image} alt="" className="iconSidebar" /> <span>Agenda</span>
+      <Menu.Item key="/salas">
+        <NavLink to="/salas">
+          <span>Salas</span>
+        </NavLink>
+      </Menu.Item>
+      <Menu.Item key="/citas">
+        <NavLink to="/citas">
+          <span>Citas</span>
         </NavLink>
       </Menu.Item>
     </Menu>

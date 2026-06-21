@@ -1,37 +1,62 @@
 import React, { useState, useEffect } from 'react';
-import date from 'dayjs';
-import FullCalendar from '@fullcalendar/react';
-import { config, eventFormat } from './config/config';
-import getAllAppointments from '../../../common/services/appoinments';
+import { Table, Tag, Button, message, Modal, Form, Input, Select, DatePicker } from 'antd';
+import dayjs from 'dayjs';
 import getAllRooms from '../../../common/services/rooms';
 
-const Schedule = () => {
-  const [appointments, setAppointments] = useState([]);
-  const [createAppointmenttVisible, setCreateAppointmentVisible] = useState(false);
-  const [rooms, setRooms] = useState([]);
+const { RangePicker } = DatePicker;
 
-  const onCreateAppointment = () => setCreateAppointmentVisible(true);
+const Rooms = () => {
+  const [rooms, setRooms] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [form] = Form.useForm();
+
+  const fetchRooms = async () => {
+    setLoading(true);
+    try {
+      const data = await getAllRooms();
+      setRooms(data);
+    } catch (error) {
+      message.error('Error al cargar salas');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    getAllRooms().then(setRooms);
-    getAllAppointments().then(setAppointments);
+    fetchRooms();
   }, []);
 
-  return (
+  const columns = [
+    { title: 'Nombre', dataIndex: 'name', key: 'name' },
+    { title: 'Capacidad', dataIndex: 'capacity', key: 'capacity' },
+    {
+      title: 'Disponible',
+      dataIndex: 'isAvailable',
+      key: 'isAvailable',
+      render: (isAvailable) => (
+        <Tag color={isAvailable ? 'green' : 'red'}>
+          {isAvailable ? 'Disponible' : 'Ocupado'}
+        </Tag>
+      ),
+    },
+  ];
 
-    <FullCalendar
-      {...config}
-      slotMinTime="08:00:00"
-      slotMaxTime="15:00:00"
-      resources={rooms.map((room) => ({ id: room.id, title: room.name }))}
-      events={appointments.map(({ startTime, endTime, patient, user, room }) => ({
-        start: date(startTime).format(eventFormat),
-        end: date(endTime).format(eventFormat),
-        title: `${patient.name} - ${user.name}`,
-        resourceId: room.id
-      }))}
-    />
+  return (
+    <div style={{ padding: 24 }}>
+      <div style={{ marginBottom: 16 }}>
+        <h2>Salas de Consulta</h2>
+      </div>
+
+      <Table
+        dataSource={rooms}
+        columns={columns}
+        rowKey="id"
+        loading={loading}
+        pagination={false}
+      />
+    </div>
   );
 };
 
-export default Schedule;
+export default Rooms;

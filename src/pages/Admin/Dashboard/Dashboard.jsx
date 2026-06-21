@@ -1,15 +1,23 @@
 import React from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
-import CreateTitle from '../../../application/components/Title/Title';
-import ContainerDashboard from './style';
+import { Typography } from 'antd';
+
+const { Title, Text } = Typography;
 
 const Dashboard = () => {
-  const { user } = useAuth0();
-
   return (
-    <ContainerDashboard data-testid="Dashboard">
-      <CreateTitle Type={1} Content={`Bienvenido a tu Hospital ${user.nickname}`} />
-    </ContainerDashboard>
+    <div style={{ padding: 24 }}>
+      <Title level={2}>Bienvenido a Doctor App</Title>
+      <Text>Gestiona doctores, pacientes, salas y citas desde el menú lateral.</Text>
+      <div style={{ marginTop: 24 }}>
+        <Title level={4}>Funcionalidades</Title>
+        <ul>
+          <li>Doctores: CRUD completo</li>
+          <li>Pacientes: CRUD completo</li>
+          <li>Salas: Consulta de salas disponibles</li>
+          <li>Citas: Calendario con citas</li>
+        </ul>
+      </div>
+    </div>
   );
 };
 

@@ -1,0 +1,32 @@
+export const mockPatients = [
+  {
+    id: '1',
+    name: 'Pedro Sánchez',
+    email: 'pedro.sanchez@email.com',
+    phone: '+34 655 123 456',
+    address: 'Calle Mayor 123, Madrid',
+    pathologies: 'Hipertensión arterial',
+    createdAt: '2024-02-01T10:00:00Z',
+    updatedAt: '2024-02-01T10:00:00Z',
+  },
+  {
+    id: '2',
+    name: 'Laura Fernández',
+    email: 'laura.fernandez@email.com',
+    phone: '+34 666 234 567',
+    address: 'Avenida España 45, Barcelona',
+    pathologies: 'Diabetes tipo 2',
+    createdAt: '2024-02-02T11:00:00Z',
+    updatedAt: '2024-02-02T11:00:00Z',
+  },
+  {
+    id: '3',
+    name: 'Miguel Rodríguez',
+    email: 'miguel.rodriguez@email.com',
+    phone: '+34 677 345 678',
+    address: 'Plaza Central 78, Valencia',
+    pathologies: '',
+    createdAt: '2024-02-03T09:00:00Z',
+    updatedAt: '2024-02-03T09:00:00Z',
+  },
+];

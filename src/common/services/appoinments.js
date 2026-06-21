@@ -1,6 +1,11 @@
-import http from '../adapters/http';
+import { GetAllAppointmentsUseCase, CreateAppointmentUseCase } from '../../core/application/useCases/appointments';
+import { appointmentRepository } from '../repositories/AppointmentRepository';
 
-const getAllAppointments = () => http.get('/appointments').then(({ data }) => data);
-export const createAppointment = (appointment) => http.post('/appointments', appointment);
+const getAllAppointmentsUseCase = new GetAllAppointmentsUseCase(appointmentRepository);
+const createAppointmentUseCase = new CreateAppointmentUseCase(appointmentRepository);
+
+const getAllAppointments = () => getAllAppointmentsUseCase.execute();
+const createAppointment = (appointment) => createAppointmentUseCase.execute(appointment);
 
 export default getAllAppointments;
+export { getAllAppointments, createAppointment };

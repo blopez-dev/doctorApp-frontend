@@ -1,94 +1,117 @@
 import React, { useState, useEffect } from 'react';
-import { Pagination, Spin, Table } from 'antd';
-import { deletePatient, getAllPatients } from 'common/services/patients';
-import NewPatient from './components/NewPatient/NewPatient';
-import CreateTitle from '../../../application/components/Title/Title';
-import PatientProfile from './components/PatientProfile/PatientProfile';
-import { columns } from './config/columns';
-import { Wrapper, TablePatients, AddNew, CustomRow } from './styles';
-
-const pageLimit = 15;
+import { Table, Button, Space, message, Modal, Form, Input, Popconfirm } from 'antd';
+import { getAllPatients, createPatient, deletePatient } from 'common/services/patients';
 
 const Patients = () => {
-  const [patients, setPatients] = useState(null);
-  const [visiblePatient, setsVisiblePatient] = useState(false);
-  const [selectedPatient, setSelectedPatient] = useState(null);
-  const [createPatientVisible, setCreatePatientVisible] = useState(false);
+  const [patients, setPatients] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [form] = Form.useForm();
 
-  const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(true);
-
-  const getPatients = () => {
+  const fetchPatients = async () => {
     setLoading(true);
-    getAllPatients(page, pageLimit)
-      .then((setPatients))
-      .finally(() => setLoading(false));
-  };
-  const showPatientProfile = (id) => {
-    setsVisiblePatient(true);
-    setSelectedPatient(id);
-  };
-  const closePatientProfile = () => {
-    setsVisiblePatient(false);
-  };
-
-  const onDeletePatient = async (id) => {
-    await deletePatient(id);
-    getPatients();
-  };
-
-  const onCreatePatient = () => {
-    setCreatePatientVisible(true);
-  };
-  const hiddenCreation = () => {
-    setCreatePatientVisible(false);
-  };
-  const onPatientsChange = () => {
-    setCreatePatientVisible(false);
-    getPatients();
+    try {
+      const data = await getAllPatients();
+      setPatients(data);
+    } catch (error) {
+      message.error('Error al cargar pacientes');
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
-    getPatients();
-  }, [page]);
+    fetchPatients();
+  }, []);
+
+  const handleCreate = async (values) => {
+    try {
+      await createPatient(values);
+      message.success('Paciente creado exitosamente');
+      setIsModalOpen(false);
+      form.resetFields();
+      fetchPatients();
+    } catch (error) {
+      message.error('Error al crear paciente');
+    }
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      await deletePatient(id);
+      message.success('Paciente eliminado');
+      fetchPatients();
+    } catch (error) {
+      message.error('Error al eliminar');
+    }
+  };
+
+  const columns = [
+    { title: 'Nombre', dataIndex: 'name', key: 'name' },
+    { title: 'Email', dataIndex: 'email', key: 'email' },
+    { title: 'Teléfono', dataIndex: 'phone', key: 'phone' },
+    { title: 'Dirección', dataIndex: 'address', key: 'address' },
+    {
+      title: 'Acciones',
+      key: 'actions',
+      render: (_, record) => (
+        <Space>
+          <Popconfirm
+            title="¿Eliminar paciente?"
+            onConfirm={() => handleDelete(record.id)}
+          >
+            <Button type="link" danger>Eliminar</Button>
+          </Popconfirm>
+        </Space>
+      ),
+    },
+  ];
 
   return (
-    <>
-      <Wrapper>
-        <CustomRow>
-          <CreateTitle Type={1} Content="Pacients" className="row__title--heading" />
-          {loading && <Spin />}
-          <AddNew onClick={onCreatePatient} className="row__button--add">Nuevo Paciente</AddNew>
-        </CustomRow>
-        <TablePatients>
-          <Table
-            columns={columns(showPatientProfile, onDeletePatient)}
-            dataSource={patients?.rows.map((patient) => ({ ...patient, key: patient.id }))}
-            pagination={false}
-            className="table--patients"
-          />
-          <Pagination
-            current={page}
-            pageSize={pageLimit}
-            total={patients?.count}
-            onChange={setPage}
-            showSizeChanger={false}
-          />
-        </TablePatients>
-        <NewPatient
-          visible={createPatientVisible}
-          onClose={hiddenCreation}
-          onFinish={onPatientsChange}
-        />
-        {selectedPatient && (
-          <PatientProfile
-            patientId={selectedPatient}
-            visible={visiblePatient}
-            onClose={closePatientProfile}
-          />
-        )}
-      </Wrapper>
-    </>
+    <div style={{ padding: 24 }}>
+      <div style={{ marginBottom: 16, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <h2>Pacientes</h2>
+        <Button type="primary" onClick={() => setIsModalOpen(true)}>
+          Nuevo Paciente
+        </Button>
+      </div>
+
+      <Table
+        dataSource={patients}
+        columns={columns}
+        rowKey="id"
+        loading={loading}
+        pagination={false}
+      />
+
+      <Modal
+        title="Nuevo Paciente"
+        open={isModalOpen}
+        onCancel={() => setIsModalOpen(false)}
+        footer={null}
+      >
+        <Form form={form} layout="vertical" onFinish={handleCreate}>
+          <Form.Item name="name" label="Nombre" rules={[{ required: true, message: 'El nombre es requerido' }]}>
+            <Input />
+          </Form.Item>
+          <Form.Item name="email" label="Email" rules={[{ required: true, type: 'email', message: 'Email inválido' }]}>
+            <Input />
+          </Form.Item>
+          <Form.Item name="phone" label="Teléfono" rules={[{ required: true, message: 'El teléfono es requerido' }]}>
+            <Input />
+          </Form.Item>
+          <Form.Item name="address" label="Dirección">
+            <Input />
+          </Form.Item>
+          <Form.Item name="pathologies" label="Patologías">
+            <Input.TextArea />
+          </Form.Item>
+          <Button type="primary" htmlType="submit" block>
+            Guardar
+          </Button>
+        </Form>
+      </Modal>
+    </div>
   );
 };
 

@@ -1,0 +1,26 @@
+export const mockAppointments = [
+  {
+    id: '1',
+    patientId: '1',
+    doctorId: '1',
+    roomId: '1',
+    startTime: '2024-03-15T09:00:00Z',
+    endTime: '2024-03-15T09:30:00Z',
+    status: 'SCHEDULED',
+    notes: 'Revisión cardiaca mensual',
+    createdAt: '2024-03-01T10:00:00Z',
+    updatedAt: '2024-03-01T10:00:00Z',
+  },
+  {
+    id: '2',
+    patientId: '2',
+    doctorId: '2',
+    roomId: '2',
+    startTime: '2024-03-15T10:00:00Z',
+    endTime: '2024-03-15T10:30:00Z',
+    status: 'SCHEDULED',
+    notes: 'Vacunación infantil',
+    createdAt: '2024-03-02T11:00:00Z',
+    updatedAt: '2024-03-02T11:00:00Z',
+  },
+];
