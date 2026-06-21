@@ -1,5 +1,4 @@
 import { css } from 'styled-components';
-import 'antd/dist/antd.css';
 
 const AntdGlobalStyle = css`
   .ant-layout{

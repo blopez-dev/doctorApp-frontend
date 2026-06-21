@@ -1,5 +1,9 @@
-import http from '../adapters/http';
+import { GetAllRoomsUseCase } from '../../core/application/useCases/rooms';
+import { roomRepository } from '../repositories/RoomRepository';
 
-const getAllRooms = () => http.get('/rooms').then(({ data }) => data);
+const getAllRoomsUseCase = new GetAllRoomsUseCase(roomRepository);
+
+const getAllRooms = () => getAllRoomsUseCase.execute();
 
 export default getAllRooms;
+export { getAllRooms };

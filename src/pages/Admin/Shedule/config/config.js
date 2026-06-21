@@ -1,6 +1,6 @@
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import resourcesTimeGridPlugin from '@fullcalendar/resource-timegrid';
+import resourceTimeGridPlugin from '@fullcalendar/resource-timegrid';
 
 export const eventFormat = 'YYYY-MM-DDTHH:mm:ss';
 export const slotFormat = 'HH:mm:ss';
@@ -13,7 +13,7 @@ export const config = {
   slotDuration: '00:20:00',
   height: 650,
   allDaySlot: false,
-  plugins: [timeGridPlugin, interactionPlugin, resourcesTimeGridPlugin],
+  plugins: [timeGridPlugin, interactionPlugin, resourceTimeGridPlugin],
   headerToolbar: {
     left: 'prev,next today',
     center: 'title',
@@ -24,7 +24,6 @@ export const config = {
   selectable: true,
   selectMirror: true,
   dayMaxEvents: true,
-  weekday: 'long',
   initialView: 'resourceTimeGridDay',
   nowIndicator: true
 };
